@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform target;
-    [SerializeField] private float smoothSpeed;
+    [SerializeField] private float smoothSpeed = 5;
     // Start is called before the first frame update
     void Start()
     {
