@@ -22,7 +22,8 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] private int armProtection;
     [SerializeField] private int feetProtectionr;
 
-    // Start is called before the first frame update
+    //Singleton pattern to access the player information from
+    //other scenes
     void Start() 
     {
         headProtectionr = headGear.GetComponent<GearInfo>().armor;
