@@ -26,6 +26,7 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void resumeGame(){
+        Debug.Log("log resume game");
         goPreviousScene();
     }
 
@@ -34,6 +35,7 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void exitGame(){
+        Debug.Log("log exit game");
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else
