@@ -22,11 +22,13 @@ public class PauseMenuController : MonoBehaviour
     // TODO : save previous scene somewhere in order to exactly return to it later
     // return to previous scene
     void goPreviousScene(){
-        SceneManager.LoadScene (sceneName:"FirstLevel");
+        int previousScene = PlayerPrefs.GetInt("PreviousScene", -1);
+        if(previousScene > -1 ) 
+            SceneManager.LoadScene(previousScene);
+        PlayerPrefs.DeleteKey("PreviousScene");
     }
 
     public void resumeGame(){
-        Debug.Log("log resume game");
         goPreviousScene();
     }
 
@@ -35,7 +37,6 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void exitGame(){
-        Debug.Log("log exit game");
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else

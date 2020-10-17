@@ -23,8 +23,9 @@ public class GameController : MonoBehaviour
             openMenu();
         }
     }
-    // open menu
+    // open menu 
     void openMenu(){
+        PlayerPrefs.SetInt("PreviousScene", SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene (sceneName:"MainMenu");
     }
 
