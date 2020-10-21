@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 19077212}
   - component: {fileID: 19077211}
   - component: {fileID: 19077210}
+  - component: {fileID: 19077214}
   - component: {fileID: 19077213}
   m_Layer: 0
   m_Name: Player
@@ -416,6 +417,32 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &19077214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19077207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513bc5c97c9213d4097d3b318f62c78b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  armor: 0
+  defense: 5
+  attack: 1
+  weaponDmg: 0
+  numArms: 2
+  headGear: {fileID: 6574398276153647548, guid: c9117a9ecc23f614fa4021fea036f09e, type: 3}
+  chestGear: {fileID: 6574398276153647548, guid: c9117a9ecc23f614fa4021fea036f09e, type: 3}
+  armGear: {fileID: 6574398276153647548, guid: c9117a9ecc23f614fa4021fea036f09e, type: 3}
+  feetGear: {fileID: 6574398276153647548, guid: c9117a9ecc23f614fa4021fea036f09e, type: 3}
+  headProtectionr: 0
+  chestProtection: 0
+  armProtection: 0
+  feetProtectionr: 0
 --- !u!1 &57807742
 GameObject:
   m_ObjectHideFlags: 0
