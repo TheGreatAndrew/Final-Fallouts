@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -82,4 +83,20 @@ public class PlayerInfo : MonoBehaviour
         //TODO Play GameOver Music
 
     }
+
+    public Dictionary<string,int> GetCurrentPlayerData()
+    {
+        //4 years of college for this
+        var data = new Dictionary<string, int>
+        {
+            {"Health", health},
+            {"Armor", armor},
+            {"Defense", defense},
+            {"Attack", attack},
+            {"WeaponDmg", weaponDmg},
+            {"NumArms", numArms}
+        };
+        return data;
+    }
+    
 }
