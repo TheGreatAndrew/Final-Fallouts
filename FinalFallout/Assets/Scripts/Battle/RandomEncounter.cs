@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*
  * Uses animation curves to customize battle chances based on biomes over times the player has moved
@@ -38,6 +39,7 @@ public class RandomEncounter : MonoBehaviour
         if (encounterChance <= encounterThreshold)
         {
             Debug.Log("~~~~~BATTLE~~~~~");
+            SceneManager.LoadScene("SimpleBattle");
             lookAt = 0f;
         }
         else

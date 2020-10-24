@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerInfo : MonoBehaviour
 {
     public int health = 100;
@@ -11,6 +12,8 @@ public class PlayerInfo : MonoBehaviour
     public int attack = 1;
     public int weaponDmg = 0;
     public int numArms = 2;
+
+    public Dictionary<string, int> playerInfo; //see GetCurrentPlayerData() for explanation
 
 
     [SerializeField] private GameObject headGear;
@@ -27,17 +30,29 @@ public class PlayerInfo : MonoBehaviour
     //other scenes
     void Start() 
     {
+        DontDestroyOnLoad(this.gameObject);
         headProtectionr = headGear.GetComponent<GearInfo>().armor;
         chestProtection = chestGear.GetComponent<GearInfo>().armor;
         armProtection = armGear.GetComponent<GearInfo>().armor;
         feetProtectionr = feetGear.GetComponent<GearInfo>().armor;
 
         armor = headProtectionr + chestProtection + armProtection + feetProtectionr;
+        playerInfo = new Dictionary<string, int>
+        {
+            {"Health", health},
+            {"Armor", armor},
+            {"Defense", defense},
+            {"Attack", attack},
+            {"WeaponDmg", weaponDmg},
+            {"NumArms", numArms}
+        }; //Needed to preserve player info across scenes
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        GetCurrentPlayerData();
         //check if dead
         if(health <= 0)
         {
@@ -84,19 +99,17 @@ public class PlayerInfo : MonoBehaviour
 
     }
 
-    public Dictionary<string,int> GetCurrentPlayerData()
+    public void GetCurrentPlayerData()
     {
-        //4 years of college for this
-        var data = new Dictionary<string, int>
-        {
-            {"Health", health},
-            {"Armor", armor},
-            {"Defense", defense},
-            {"Attack", attack},
-            {"WeaponDmg", weaponDmg},
-            {"NumArms", numArms}
-        };
-        return data;
+        //Returns updates player data in the form of a dictionary
+        //this might be needed in the future but if not it should be easy to remove all this
+        //if this is removed dont forget to update battledata.cs and healthbar.cs
+        playerInfo["Health"] = health;
+        playerInfo["Armor"] = armor;
+        playerInfo["Defense"] = defense;
+        playerInfo["Attack"] = attack;
+        playerInfo["WeaponDmg"] = weaponDmg;
+        playerInfo["NumArms"] = numArms;
     }
-    
+
 }

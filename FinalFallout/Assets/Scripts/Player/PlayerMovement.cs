@@ -58,4 +58,9 @@ public class PlayerMovement : MonoBehaviour
             rndEncScript.isEncounter();
         }
     }
+
+    public void StopPlayer()
+    {
+        rb.velocity = Vector2.zero;
+    }
 }
