@@ -17,7 +17,7 @@ public class RandomEncounter : MonoBehaviour
     public AnimationCurve OverworldCurve; //TODO make curves for each type of biome
 
     private float lookAt = 0f;
-    private float offset = 0.0025f; //I like 0.001 but 25 is a good number for debugging 
+    [SerializeField] private float offset = 0.0025f; //I like 0.001 but 25 is a good number for debugging 
     private float encounterChance;
     private float encounterThreshold;
 

@@ -43,14 +43,14 @@ public class BattleData : MonoBehaviour
     {
         playerHealthBar.UpdateHealth(player["Health"]);
         enemyHealthBar.UpdateHealth(enemy["Health"]);
-        if (currentPlayerState.health == 0)
+        if (currentPlayerState.health <= 0)
         {
             Flee();
             Debug.Log("Lost Battle");
             return;
         }
 
-        if (enemy["Health"] == 0)
+        if (enemy["Health"] <= 0)
         {
             Flee();
             Debug.Log("Won battle");
@@ -89,8 +89,9 @@ public class BattleData : MonoBehaviour
         currentPlayerState.health = 100;
         GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().enabled = true;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
+        Vector3 tempPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position = currentPlayerState.currentPos;
         SceneManager.LoadScene(currentPlayerState.sceneName);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position = currentPlayerState.currentPos;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position = tempPos;
     }
 
     public void Attack()
