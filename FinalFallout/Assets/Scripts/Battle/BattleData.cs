@@ -89,7 +89,8 @@ public class BattleData : MonoBehaviour
         currentPlayerState.health = 100;
         GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().enabled = true;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
-        SceneManager.LoadScene("FirstLevel");
+        SceneManager.LoadScene(currentPlayerState.sceneName);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position = currentPlayerState.currentPos;
     }
 
     public void Attack()

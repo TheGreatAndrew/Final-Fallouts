@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerInfo : MonoBehaviour
 {
+    
     public int health = 100;
     public int armor = 0;
     public int defense = 5;
@@ -15,7 +17,9 @@ public class PlayerInfo : MonoBehaviour
 
     public Dictionary<string, int> playerInfo; //see GetCurrentPlayerData() for explanation
 
-
+    public string sceneName;
+    public Vector3 currentPos;
+    
     [SerializeField] private GameObject headGear;
     [SerializeField] private GameObject chestGear;
     [SerializeField] private GameObject armGear;
@@ -26,11 +30,16 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] private int armProtection;
     [SerializeField] private int feetProtectionr;
 
+    private Transform pos;
+
+
     //Singleton pattern to access the player information from
     //other scenes
     void Start() 
     {
         DontDestroyOnLoad(this.gameObject);
+        pos = gameObject.GetComponent<Transform>();
+        sceneName = SceneManager.GetActiveScene().name;
         headProtectionr = headGear.GetComponent<GearInfo>().armor;
         chestProtection = chestGear.GetComponent<GearInfo>().armor;
         armProtection = armGear.GetComponent<GearInfo>().armor;
@@ -52,6 +61,7 @@ public class PlayerInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         GetCurrentPlayerData();
         //check if dead
         if(health <= 0)
@@ -110,6 +120,26 @@ public class PlayerInfo : MonoBehaviour
         playerInfo["Attack"] = attack;
         playerInfo["WeaponDmg"] = weaponDmg;
         playerInfo["NumArms"] = numArms;
+    }
+
+    private void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+ 
+    private void OnDisable() {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name.CompareTo("SimpleBattle") != 0)
+        {
+            sceneName = scene.name;
+        }
+        else
+        {
+            currentPos = pos.position;
+        }
     }
 
 }

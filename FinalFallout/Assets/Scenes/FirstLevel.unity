@@ -432,7 +432,7 @@ MonoBehaviour:
   health: 100
   armor: 0
   defense: 5
-  attack: 1
+  attack: 34
   weaponDmg: 0
   numArms: 2
   headGear: {fileID: 6574398276153647548, guid: c9117a9ecc23f614fa4021fea036f09e, type: 3}
