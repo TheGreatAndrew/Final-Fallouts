@@ -23,4 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cave.unity
     guid: 172cee6775bc4304194d44f0fd3889ec
+    path: Assets/Scenes/SimpleBattle.unity
+    guid: ab026d5f8d9b4c84aa1a8e1ded110f17
   m_configObjects: {}

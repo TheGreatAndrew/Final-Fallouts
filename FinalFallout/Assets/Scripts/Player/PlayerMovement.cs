@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     public string levelPW;
     //Create a singleton pattern to have 
     //access to the movement from other scenes
+
+    //For Random Encounter Generator
+   private RandomEncounter rndEncScript;
+
     private void Awake()
     {
         if(instance == null)
@@ -35,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         rb = GetComponent<Rigidbody2D>();
+        rndEncScript = gameObject.GetComponent<RandomEncounter>();
     }
 
     // Update is called once per frame
@@ -46,5 +51,16 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveH, moveV);
+
+        //if player has moved check if in an encounter
+        if(moveH != 0 || moveV != 0)
+        {
+            rndEncScript.isEncounter();
+        }
+    }
+
+    public void StopPlayer()
+    {
+        rb.velocity = Vector2.zero;
     }
 }
