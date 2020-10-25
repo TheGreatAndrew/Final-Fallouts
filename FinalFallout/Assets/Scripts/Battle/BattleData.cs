@@ -2,13 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
+/*
+ * TODO: IMPLEMENT SAVE FILE
+ */
 public class BattleData : MonoBehaviour
 {
     public HealthBar playerHealthBar;
     public HealthBar enemyHealthBar;
     private Dictionary<string,int> player;
     private Dictionary<string,int> enemy;
+    private bool playerTurn = true;
+    private bool enemyTurnRunning = false;
+
+    public Button attackButton;
+    public Button fleeButton;
 
     private PlayerInfo currentPlayerState;
     // Start is called before the first frame update
@@ -27,8 +36,6 @@ public class BattleData : MonoBehaviour
         player = currentPlayerState.playerInfo;
         playerHealthBar.SetMaxHealth(player["Health"]);
         enemyHealthBar.SetMaxHealth(enemy["Health"]);
-        StartCoroutine(ReturnToOverworld());
-        StartCoroutine(DamagePlayer());
     }
 
     // Update is called once per frame
@@ -36,21 +43,66 @@ public class BattleData : MonoBehaviour
     {
         playerHealthBar.UpdateHealth(player["Health"]);
         enemyHealthBar.UpdateHealth(enemy["Health"]);
+        if (currentPlayerState.health == 0)
+        {
+            Flee();
+            Debug.Log("Lost Battle");
+            return;
+        }
+
+        if (enemy["Health"] == 0)
+        {
+            Flee();
+            Debug.Log("Won battle");
+            return;
+        }
+
+        if (!playerTurn)
+        {
+            attackButton.interactable = false;
+            fleeButton.interactable = false;
+            if (!enemyTurnRunning)
+            {
+                StartCoroutine(EnemyTurn());
+            }
+        }
+        else
+        {
+            attackButton.interactable = true;
+            fleeButton.interactable = true;
+        }
+    }
+    
+    private IEnumerator EnemyTurn()
+    {
+        playerTurn = false;
+        enemyTurnRunning = true;
+        yield return new WaitForSeconds(5);
+        Attack();
+        playerTurn = true;
+        enemyTurnRunning = false;
     }
 
-    private IEnumerator ReturnToOverworld()
+    public void Flee()
     {
-        //debug function
-        yield return new WaitForSeconds(15f);
+        Debug.Log("Flee Called");
+        currentPlayerState.health = 100;
         GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().enabled = true;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
         SceneManager.LoadScene("FirstLevel");
     }
 
-    private IEnumerator DamagePlayer()
+    public void Attack()
     {
-        yield return new WaitForSeconds(5);
-        currentPlayerState.health -= 25;
-        enemy["Health"] -= 25;
+        Debug.Log("Attack called");
+        if (!playerTurn)
+        {
+            currentPlayerState.health -= enemy["Attack"];
+        }
+        else
+        {
+            enemy["Health"] -= currentPlayerState.attack;
+            playerTurn = false;
+        }
     }
 }
