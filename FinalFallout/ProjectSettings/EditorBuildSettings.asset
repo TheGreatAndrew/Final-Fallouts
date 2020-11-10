@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SimpleBattle.unity
     guid: ab026d5f8d9b4c84aa1a8e1ded110f17
+  - enabled: 1
+    path: Assets/Scenes/HouseRoom.unity
+    guid: 078bb68cc7a3fd94581a0c83747715a5
   m_configObjects: {}
