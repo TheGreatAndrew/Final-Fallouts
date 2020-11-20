@@ -54,6 +54,7 @@ public class BattleData : MonoBehaviour
         {
             Flee();
             Debug.Log("Won battle");
+
             return;
         }
 
@@ -92,6 +93,12 @@ public class BattleData : MonoBehaviour
         Vector3 tempPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position = currentPlayerState.currentPos;
         SceneManager.LoadScene(currentPlayerState.sceneName);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position = tempPos;
+        
+        // TODO : if won, random rewards
+        // var playerPos = currentPlayerState.GetComponent<PlayerInfo>().transform.position;
+        // var equipment = Resources.Load("Equipments/" + "Sworda");
+        // Instantiate(equipment, playerPos + new Vector3(1, 0, 0), Quaternion.identity);
+
     }
 
     public void Attack()
