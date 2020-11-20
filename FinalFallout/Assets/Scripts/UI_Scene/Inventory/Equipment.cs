@@ -11,7 +11,6 @@ public class Equipment : Item {
 	public int damageModifier;      
     public SkinnedMeshRenderer mesh;
     public EquipmentManager.MeshBlendShape[] coveredMeshRegions;
-
  	public override void Use()
 	{
 		base.Use();
@@ -23,4 +22,4 @@ public class Equipment : Item {
 
 }
 
-public enum EquipmentSlot { Head, Chest, Weapon, Shield, Feet }
+public enum EquipmentSlot { Head, Chest, Weapon, SubWeapon, Feet }
