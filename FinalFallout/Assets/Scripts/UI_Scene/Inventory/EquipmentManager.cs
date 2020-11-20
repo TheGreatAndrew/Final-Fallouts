@@ -12,10 +12,16 @@ public class EquipmentManager : MonoBehaviour {
 	public static EquipmentManager instance;
 	public SkinnedMeshRenderer targetMesh;
 
-    // SkinnedMeshRenderer[] currentMeshes;
+    SkinnedMeshRenderer[] currentMeshes;
 
 	void Awake ()
 	{
+		if (instance != null)
+		{
+			Debug.LogWarning("More than one instance of EquipmentManager found!");
+			return;
+		}
+
 		instance = this;
 	}
 
@@ -64,6 +70,8 @@ public class EquipmentManager : MonoBehaviour {
 
 		currentEquipment[slotIndex] = newItem;
 
+
+		Debug.Log("AAA" + headButton);
 		// equip weapon
 		if(slotIndex == 0)
 			headButton.Equip(newItem);
@@ -81,6 +89,7 @@ public class EquipmentManager : MonoBehaviour {
         // AttachToMesh(newItem, slotIndex);
 	}
 
+	// Cause Unity onClick don't show up
 	public void UnequipHelper(int slotIndex){
 		Unequip(slotIndex);
 	}
@@ -174,18 +183,5 @@ public class EquipmentManager : MonoBehaviour {
 			Equip(e);
 		}
     }
-
-	void Update ()
-	{
-		// if(currentEquipment[0] == null){
-		// 	headButton.
-		// } else { 
-
-		// }
-
-
-
-
-	}
 
 }

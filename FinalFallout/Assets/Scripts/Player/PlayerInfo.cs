@@ -68,7 +68,8 @@ public class PlayerInfo : MonoBehaviour
             {"NumArms", numArms}
         }; //Needed to preserve player info across scenes
         
-        inventory = new Inventory();
+        inventory = Inventory.instance;
+        // inventory = new Inventory();
         // inventoryUI.SetInventory(inventory);
         
     }

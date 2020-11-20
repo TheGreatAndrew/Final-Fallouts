@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// TODO
-// drop after game : bunch of equipments -> bunch of prefabs
-// consumable item script : effect stats
+// TODO : reward after battle
+// TODO : vendor to buy from
+// TODO : DonDestroyOnLoad still create multiple instance of EquipmentManager and Inventory
 
 public class Inventory : MonoBehaviour {
 
