@@ -79,6 +79,9 @@ public class PlayerMovement : MonoBehaviour
 		}
         if(other.name == "Merchant")
         {
+            if(gameCtrl == null)
+                gameCtrl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+            
             gameCtrl.MerchantShopMenu.GetComponent<MerchantInteraction>().TriggerInteraction();
         }
     }

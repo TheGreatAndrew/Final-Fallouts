@@ -16,6 +16,7 @@ public class PlayerInfo : MonoBehaviour
     public int numArms = 2;
     public int gold = 0;
 
+    //For dialog
     public bool inConversation = false;
     [SerializeField] DialogManager dMang;
 
@@ -45,7 +46,6 @@ public class PlayerInfo : MonoBehaviour
     public Text attackText;
     public Text weaponDmgText;
     public Text numArmsText;
-    
 
     //Singleton pattern to access the player information from
     //other scenes
@@ -58,6 +58,7 @@ public class PlayerInfo : MonoBehaviour
         chestProtection = chestGear.GetComponent<GearInfo>().armor;
         armProtection = armGear.GetComponent<GearInfo>().armor;
         feetProtectionr = feetGear.GetComponent<GearInfo>().armor;
+        dMang = GameObject.FindGameObjectWithTag("DialogManager").GetComponent<DialogManager>();
 
         // armor = + headProtection + chestProtection + armProtection + feetProtectionr;
         armor = 0;
@@ -99,7 +100,10 @@ public class PlayerInfo : MonoBehaviour
 
         if (inConversation && Input.GetKeyDown(KeyCode.Space))
         {
+            if(dMang == null)
+                dMang = GameObject.FindGameObjectWithTag("DialogManager").GetComponent<DialogManager>();
             dMang.DisplayNextSentence();
+
         }
     }
     /******************************************

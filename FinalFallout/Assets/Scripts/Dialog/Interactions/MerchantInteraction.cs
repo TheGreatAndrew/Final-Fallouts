@@ -132,10 +132,8 @@ public class MerchantInteraction : MonoBehaviour
 
     public void TriggerInteraction()
     {
-        Debug.Log(welcome.name);
         merchantDisplay.SetBool("atMerchant", true);
         dMang.StartDialog(welcome);
-        //stop movement
         player.gameObject.GetComponent<PlayerMovement>().StopPlayer();
         player.gameObject.GetComponent<PlayerMovement>().enabled = false;
     }
