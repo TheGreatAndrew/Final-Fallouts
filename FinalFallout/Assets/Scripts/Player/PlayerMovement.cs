@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
    	public Interactable focus;	// Our current focus: Item, Enemy etc.
     // PlayerMovement motor;
 
+    [SerializeField] GameController gameCtrl;
+
     private void Awake()
     {
         if(instance == null)
@@ -41,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
 
-
+        gameCtrl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         rb = GetComponent<Rigidbody2D>();
         rndEncScript = gameObject.GetComponent<RandomEncounter>();
     }
@@ -75,6 +77,10 @@ public class PlayerMovement : MonoBehaviour
         if (interactable != null){
 			SetFocus(interactable);
 		}
+        if(other.name == "Merchant")
+        {
+            gameCtrl.MerchantShopMenu.GetComponent<MerchantInteraction>().TriggerInteraction();
+        }
     }
 
     // FOR MENU

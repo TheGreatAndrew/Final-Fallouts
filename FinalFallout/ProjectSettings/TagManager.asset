@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gear
   - Equipment
+  - DialogManager
   layers:
   - Default
   - TransparentFX

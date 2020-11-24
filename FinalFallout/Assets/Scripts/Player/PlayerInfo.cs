@@ -14,6 +14,10 @@ public class PlayerInfo : MonoBehaviour
     public int attack = 1;
     public int weaponDmg = 0;
     public int numArms = 2;
+    public int gold = 0;
+
+    public bool inConversation = false;
+    [SerializeField] DialogManager dMang;
 
     public Dictionary<string, int> playerInfo; //see GetCurrentPlayerData() for explanation
 
@@ -91,6 +95,11 @@ public class PlayerInfo : MonoBehaviour
         if(health <= 0)
         {
             Death();
+        }
+
+        if (inConversation && Input.GetKeyDown(KeyCode.Space))
+        {
+            dMang.DisplayNextSentence();
         }
     }
     /******************************************

@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public int health = 50;
     public int level = 1;
     [SerializeField] public bool isPaused = false ;
+    public GameObject MerchantShopMenu;
 
 
     void Start()
