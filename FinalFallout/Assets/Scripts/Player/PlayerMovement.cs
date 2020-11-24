@@ -84,6 +84,14 @@ public class PlayerMovement : MonoBehaviour
             
             gameCtrl.MerchantShopMenu.GetComponent<MerchantInteraction>().TriggerInteraction();
         }
+        if(other.name == "SafeZone")
+        {
+            rndEncScript.setSafeZoneCurve();
+        }
+        if (other.tag == "Overworld")
+        {
+            rndEncScript.setOverworldCurve();
+        }
     }
 
     // FOR MENU

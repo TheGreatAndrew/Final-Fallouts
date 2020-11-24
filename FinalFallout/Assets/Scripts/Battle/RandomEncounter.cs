@@ -15,16 +15,21 @@ public class RandomEncounter : MonoBehaviour
 {
     //Random Encounter Variables
     public AnimationCurve OverworldCurve; //TODO make curves for each type of biome
+    public AnimationCurve SafeZoneCurve;
+
+    public AnimationCurve currentCurve;
 
     private float lookAt = 0f;
     [SerializeField] private float offset = 0.0025f; //I like 0.001 but 25 is a good number for debugging 
     private float encounterChance;
     private float encounterThreshold;
 
+
     
     void Start()
     {
         //TODO probably need to get player info or at least biome location player is currently in
+        currentCurve = OverworldCurve;
     }
 
     //Check if an encounter has taken place
@@ -34,7 +39,7 @@ public class RandomEncounter : MonoBehaviour
 
         encounterChance = Random.Range(0f, 1f);
         
-        encounterThreshold = OverworldCurve.Evaluate(lookAt); //This is where biome comes into play
+        encounterThreshold = currentCurve.Evaluate(lookAt); //This is where biome comes into play
         
         if (encounterChance <= encounterThreshold)
         {
@@ -47,4 +52,13 @@ public class RandomEncounter : MonoBehaviour
             lookAt += offset;
         }
     }
+
+    public void setOverworldCurve()
+    {
+        currentCurve = OverworldCurve;
+    }
+    public void setSafeZoneCurve()
+    {
+        currentCurve = SafeZoneCurve;
+    }    
 }
