@@ -18,6 +18,12 @@ public class PlayerMovement : MonoBehaviour
     //For Random Encounter Generator
    private RandomEncounter rndEncScript;
 
+    // FOR MENU
+   	public Interactable focus;	// Our current focus: Item, Enemy etc.
+    // PlayerMovement motor;
+
+    [SerializeField] GameController gameCtrl;
+
     private void Awake()
     {
         if(instance == null)
@@ -37,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
 
-
+        gameCtrl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         rb = GetComponent<Rigidbody2D>();
         rndEncScript = gameObject.GetComponent<RandomEncounter>();
     }
@@ -63,4 +69,45 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
     }
+
+    // when touch items
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log(other.name);
+        Interactable interactable = other.GetComponent<Collider2D>().GetComponent<Interactable>();
+        if (interactable != null){
+			SetFocus(interactable);
+		}
+        if(other.name == "Merchant")
+        {
+            if(gameCtrl == null)
+                gameCtrl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+            
+            gameCtrl.MerchantShopMenu.GetComponent<MerchantInteraction>().TriggerInteraction();
+        }
+    }
+
+    // FOR MENU
+    void SetFocus (Interactable newFocus)
+	{
+		if (newFocus != focus)
+		{
+			if (focus != null)
+				focus.OnDefocused();
+
+			focus = newFocus;
+			// motor.FollowTarget(newFocus);	// Follow the new focus
+		}
+		
+		newFocus.OnFocused(transform);
+	}
+
+    void RemoveFocus ()
+	{
+		if (focus != null)
+			focus.OnDefocused();
+
+		focus = null;
+		// motor.StopFollowingTarget();
+	}
+
 }

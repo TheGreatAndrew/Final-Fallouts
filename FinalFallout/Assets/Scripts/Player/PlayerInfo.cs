@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
@@ -14,6 +14,11 @@ public class PlayerInfo : MonoBehaviour
     public int attack = 1;
     public int weaponDmg = 0;
     public int numArms = 2;
+    public int gold = 0;
+
+    //For dialog
+    public bool inConversation = false;
+    [SerializeField] DialogManager dMang;
 
     public Dictionary<string, int> playerInfo; //see GetCurrentPlayerData() for explanation
 
@@ -25,13 +30,22 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] private GameObject armGear;
     [SerializeField] private GameObject feetGear;
 
-    [SerializeField] private int headProtectionr;
+    [SerializeField] private int headProtection;
     [SerializeField] private int chestProtection;
     [SerializeField] private int armProtection;
     [SerializeField] private int feetProtectionr;
 
     private Transform pos;
 
+    // private Inventory inventory;
+    [SerializeField] private InventoryUI inventoryUI;
+    private Inventory inventory;
+    public Text healthText;
+    public Text armorText;
+    public Text defenseText;
+    public Text attackText;
+    public Text weaponDmgText;
+    public Text numArmsText;
 
     //Singleton pattern to access the player information from
     //other scenes
@@ -40,12 +54,15 @@ public class PlayerInfo : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         pos = gameObject.GetComponent<Transform>();
         sceneName = SceneManager.GetActiveScene().name;
-        headProtectionr = headGear.GetComponent<GearInfo>().armor;
+        headProtection = headGear.GetComponent<GearInfo>().armor;
         chestProtection = chestGear.GetComponent<GearInfo>().armor;
         armProtection = armGear.GetComponent<GearInfo>().armor;
         feetProtectionr = feetGear.GetComponent<GearInfo>().armor;
+        dMang = GameObject.FindGameObjectWithTag("DialogManager").GetComponent<DialogManager>();
 
-        armor = headProtectionr + chestProtection + armProtection + feetProtectionr;
+        // armor = + headProtection + chestProtection + armProtection + feetProtectionr;
+        armor = 0;
+        weaponDmg = 0;
         playerInfo = new Dictionary<string, int>
         {
             {"Health", health},
@@ -56,6 +73,10 @@ public class PlayerInfo : MonoBehaviour
             {"NumArms", numArms}
         }; //Needed to preserve player info across scenes
         
+        inventory = Inventory.instance;
+        // inventory = new Inventory();
+        // inventoryUI.SetInventory(inventory);
+        
     }
 
     // Update is called once per frame
@@ -63,10 +84,26 @@ public class PlayerInfo : MonoBehaviour
     {
         
         GetCurrentPlayerData();
+
+        healthText.text = "Health: " + health;
+        armorText.text = "Armor: " + armor;
+        defenseText.text = "Defense: " + defense;
+        attackText.text = "Attack: " + attack;
+        weaponDmgText.text = "Weapon: " + weaponDmg;
+        numArmsText.text = "numArms: " + numArms;
+
         //check if dead
         if(health <= 0)
         {
             Death();
+        }
+
+        if (inConversation && Input.GetKeyDown(KeyCode.Space))
+        {
+            if(dMang == null)
+                dMang = GameObject.FindGameObjectWithTag("DialogManager").GetComponent<DialogManager>();
+            dMang.DisplayNextSentence();
+
         }
     }
     /******************************************
@@ -76,26 +113,26 @@ public class PlayerInfo : MonoBehaviour
     public void ChangeHeadGear(GameObject newHG)
     {
         headGear = newHG;
-        headProtectionr = headGear.GetComponent<GearInfo>().armor;
-        armor = headProtectionr + chestProtection + armProtection + feetProtectionr;
+        headProtection = headGear.GetComponent<GearInfo>().armor;
+        armor = headProtection + chestProtection + armProtection + feetProtectionr;
     }
     public void ChangeChestGear(GameObject newCG)
     {
         chestGear = newCG;
         chestProtection = chestGear.GetComponent<GearInfo>().armor;
-        armor = headProtectionr + chestProtection + armProtection + feetProtectionr;
+        armor = headProtection + chestProtection + armProtection + feetProtectionr;
     }
     public void ChangeArmGear(GameObject newAG)
     {
         armGear = newAG;
         armProtection = armGear.GetComponent<GearInfo>().armor;
-        armor = headProtectionr + chestProtection + armProtection + feetProtectionr;
+        armor = headProtection + chestProtection + armProtection + feetProtectionr;
     }
     public void ChangeFeetGear(GameObject newFG)
     {
         feetGear = newFG;
         feetProtectionr = feetGear.GetComponent<GearInfo>().armor;
-        armor = headProtectionr + chestProtection + armProtection + feetProtectionr;
+        armor = headProtection + chestProtection + armProtection + feetProtectionr;
     }
 
 

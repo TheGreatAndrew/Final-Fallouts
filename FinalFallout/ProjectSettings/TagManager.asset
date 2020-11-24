@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Gear
+  - Equipment
+  - DialogManager
   layers:
   - Default
   - TransparentFX
