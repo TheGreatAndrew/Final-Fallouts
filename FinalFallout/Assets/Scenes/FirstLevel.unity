@@ -21670,6 +21670,11 @@ Transform:
   m_Father: {fileID: 763068150}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &667420214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8387954403275073045, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
+  m_PrefabInstance: {fileID: 1552700494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &676798985
 GameObject:
   m_ObjectHideFlags: 0
@@ -25834,6 +25839,9 @@ MonoBehaviour:
   refuseQuest:
     name: 
     sentences: []
+  leave:
+    name: 
+    sentences: []
 --- !u!114 &1342849742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27462,6 +27470,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8387954403275073045, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
+      propertyPath: m_Name
+      value: PlayerUI
+      objectReference: {fileID: 0}
     - target: {fileID: 8387954403287497836, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -27566,6 +27578,14 @@ PrefabInstance:
       propertyPath: dMang
       value: 
       objectReference: {fileID: 1289641442}
+    - target: {fileID: 8387954403480139219, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
+      propertyPath: playerMenus
+      value: 
+      objectReference: {fileID: 667420214}
+    - target: {fileID: 8387954403480139220, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
+      propertyPath: playerMenus
+      value: 
+      objectReference: {fileID: 667420214}
     - target: {fileID: 8387954403480139224, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

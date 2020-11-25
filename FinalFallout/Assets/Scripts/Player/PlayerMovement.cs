@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveH = Input.GetAxisRaw("Horizontal") * moveSpeed;
         moveV = Input.GetAxisRaw("Vertical") * moveSpeed;
+
     }
     private void FixedUpdate()
     {
