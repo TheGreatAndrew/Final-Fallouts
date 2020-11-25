@@ -33,6 +33,9 @@ public class DialogManager : MonoBehaviour
 
 	public void StartDialog(Dialog dialog)
 	{
+		Debug.Log("In Dialog: " + dialog.name);
+		Debug.Log("In Dialog: " + dialog.sentences[0]);
+
 		player.inConversation = true;
 
 		animator.SetBool("IsOpen", true);

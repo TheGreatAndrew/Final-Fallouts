@@ -77,11 +77,12 @@ public class PlayerMovement : MonoBehaviour
         if (interactable != null){
 			SetFocus(interactable);
 		}
-        if(other.name == "Merchant")
-        {
-            if(gameCtrl == null)
-                gameCtrl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-            
+
+        if (gameCtrl == null)
+            gameCtrl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+
+        if (other.name == "Merchant")
+        {           
             gameCtrl.MerchantShopMenu.GetComponent<MerchantInteraction>().TriggerInteraction();
         }
         if(other.name == "SafeZone")
@@ -91,6 +92,10 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Overworld")
         {
             rndEncScript.setOverworldCurve();
+        }
+        if(other.tag == "QuestGiver")
+        {
+            gameCtrl.QuestGiverList.GetComponent<QuestInteraction>().triggerInteraction();
         }
     }
 

@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public int level = 1;
     [SerializeField] public bool isPaused = false ;
     public GameObject MerchantShopMenu;
+    public GameObject QuestGiverList;
 
 
     void Start()
