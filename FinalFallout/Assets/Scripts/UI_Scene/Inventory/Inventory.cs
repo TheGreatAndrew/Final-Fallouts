@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// TODO : reward after battle
-// TODO : vendor to buy from
-// TODO : DonDestroyOnLoad still create multiple instance of EquipmentManager and Inventory
+// TODO : DonDestroyOnLoad still create multiple instance of EquipmentManager and Inventory and this lead to error
+// check if inventory is created, if yes dont create it again
 
 public class Inventory : MonoBehaviour {
 
@@ -16,14 +15,21 @@ public class Inventory : MonoBehaviour {
 	public InventoryUI inventoryUI;
 	void Awake ()
 	{
-		if (instance != null)
-		{
-			Debug.LogWarning("More than one instance of Inventory found!");
-			return;
-		}
+		// if (instance != null)
+		// {
+		// 	Debug.LogWarning("More than one instance of Inventory found!");
+		// 	return;
+		// }
 
-		instance = this;
-		inventoryUI.Init();
+		// instance = this;
+
+		if(instance == null){
+			instance = this;
+			inventoryUI.Init();
+		}
+		else if(instance != null){
+			Destroy(gameObject);
+		}
 	}
 
 	#endregion
@@ -47,7 +53,6 @@ public class Inventory : MonoBehaviour {
 			// Check if out of space
 			if (items.Count >= space)
 			{
-				Debug.Log("Not enough room.");
 				return false;
 			}
 
