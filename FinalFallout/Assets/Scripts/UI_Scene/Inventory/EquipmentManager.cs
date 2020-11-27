@@ -16,13 +16,23 @@ public class EquipmentManager : MonoBehaviour {
 
 	void Awake ()
 	{
-		if (instance != null)
-		{
-			Debug.LogWarning("More than one instance of EquipmentManager found!");
-			return;
+		// if (instance != null)
+		// {
+		// 	Debug.LogWarning("More than one instance of EquipmentManager found!");
+		// 	return;
+		// }
+
+		// instance = this;
+
+
+		if(instance == null){
+			instance = this;
+		}
+		else if(instance != null){
+			Destroy(gameObject);
 		}
 
-		instance = this;
+
 	}
 
 	#endregion

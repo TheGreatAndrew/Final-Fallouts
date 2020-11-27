@@ -23,6 +23,7 @@ public class BattleData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         enemy = new Dictionary<string, int>
         {
             {"Health",50},
@@ -54,6 +55,7 @@ public class BattleData : MonoBehaviour
         {
             Flee();
             Debug.Log("Won battle");
+            PlayerPrefs.SetInt("BattleWon", 1);
 
             return;
         }
@@ -91,6 +93,7 @@ public class BattleData : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().enabled = true;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
         Vector3 tempPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position = currentPlayerState.currentPos;
+        PlayerPrefs.SetInt("BattleScene", 1);
         SceneManager.LoadScene(currentPlayerState.sceneName);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position = tempPos;
         
