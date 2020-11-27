@@ -36,8 +36,12 @@ public class MerchantItems : MonoBehaviour
     [SerializeField] TextMeshProUGUI displayText;
     [SerializeField] TextMeshProUGUI CancelButtonText;
 
+    [SerializeField] Inventory player;
+
     private void Start()
     {
+        GameObject pl = GameObject.FindGameObjectWithTag("Player");
+        player = pl.transform.GetChild(5).gameObject.transform.GetChild(0).gameObject.GetComponent<Inventory>();
         setPotionImg.sprite = potion;
         setHeadImg.sprite = headGear;
         setChestImg.sprite = chestGear;
@@ -81,5 +85,56 @@ public class MerchantItems : MonoBehaviour
         displayText.text = "";
         CancelButtonText.text = "Leave";
     }
+
+    public void createPotion()
+    {
+        Consumable potionItem = new Consumable();
+        potionItem.name = "potion";
+        potionItem.icon = potion;
+        potionItem.healthEffect = 50;
+        player.Add(potionItem);
+    }
+
+    public void createHead()
+    {
+        Equipment headGearItem = ScriptableObject.CreateInstance<Equipment>();
+        headGearItem.name = "Iron Helmet";
+        headGearItem.icon = headGear;
+        headGearItem.equipSlot = EquipmentSlot.Head;
+        headGearItem.armorModifier = 5;
+        player.Add(headGearItem);
+    }
+
+    public void createChest()
+    {
+        Equipment chestGearItem = ScriptableObject.CreateInstance<Equipment>();
+        chestGearItem.name = "Iron Chestplate";
+        chestGearItem.icon = chestGear;
+        chestGearItem.equipSlot = EquipmentSlot.Chest;
+        chestGearItem.armorModifier = 10;
+        player.Add(chestGearItem);
+    }
+
+    public void createArm()
+    {
+        Equipment armGearItem = ScriptableObject.CreateInstance<Equipment>();
+        armGearItem.name = "Iron Gauntlets";
+        armGearItem.icon = armGear;
+        armGearItem.equipSlot = EquipmentSlot.Arm;
+        armGearItem.armorModifier = 5;
+        player.Add(armGearItem);
+    }
+
+    public void createLeg()
+    {
+        Equipment legGearItem = ScriptableObject.CreateInstance<Equipment>();
+        legGearItem.name = "Iron Boots";
+        legGearItem.icon = legGear;
+        legGearItem.equipSlot = EquipmentSlot.Feet;
+        legGearItem.armorModifier = 5;
+        legGearItem.isDefaultItem = false;
+        player.Add(legGearItem);
+    }
+
 
 }

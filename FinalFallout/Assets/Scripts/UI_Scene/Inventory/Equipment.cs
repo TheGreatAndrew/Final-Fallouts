@@ -22,4 +22,4 @@ public class Equipment : Item {
 
 }
 
-public enum EquipmentSlot { Head, Chest, Weapon, SubWeapon, Feet }
+public enum EquipmentSlot { Head, Chest, Weapon, SubWeapon, Feet, Arm }

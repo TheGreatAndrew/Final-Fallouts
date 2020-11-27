@@ -26,7 +26,8 @@ public class QuestGiverList : MonoBehaviour
     private int bossReward = 2000;
 
     [SerializeField] Image displayImg;
-    public TextMeshProUGUI displayText;
+    [SerializeField] TextMeshProUGUI displayText;
+    [SerializeField] TextMeshProUGUI displayReward;
     [SerializeField] TextMeshProUGUI cancelText;
 
     
@@ -49,6 +50,8 @@ public class QuestGiverList : MonoBehaviour
 
     private void Start()
     {
+        displayReward.text = "";
+        displayText.text = "";
         easy = new Quest();
         easy.name = "1st " + easyMonster + " Quest";
         easy.description = "Mr. Dijkstra is having a hard time getting to his crops just outside of town. He wants you to thin out the "
@@ -101,22 +104,26 @@ public class QuestGiverList : MonoBehaviour
         {
             case "easy":
                 displayImg.sprite = easySprite;
-                displayText.text = easy.description + " Reward: " + easy.reward + " gold";
+                displayText.text = easy.description;
+                displayReward.text = "Reward: " + easy.reward + " gold";
                 cancelText.text = "Cancel";
                 break;
             case "medium":
                 displayImg.sprite = medSprite;
-                displayText.text = medium.description + " Reward: " + medium.reward + " gold";
+                displayText.text = medium.description;
+                displayReward.text = "Reward: " + medium.reward + " gold";
                 cancelText.text = "Cancel";
                 break;
             case "hard":
                 displayImg.sprite = hardSprite;
-                displayText.text = hard.description + " Reward: " + hard.reward + " gold";
+                displayText.text = hard.description;
+                displayReward.text = "Reward: " + hard.reward + " gold";
                 cancelText.text = "Cancel";
                 break;
             case "Boss":
                 displayImg.sprite = bossSprite;
-                displayText.text = Boss.description + " Reward: " + Boss.reward + " gold";
+                displayText.text = Boss.description;
+                displayReward.text = "Reward: " + Boss.reward + " gold";
                 cancelText.text = "Cancel";
                 break;
         }
@@ -126,6 +133,7 @@ public class QuestGiverList : MonoBehaviour
     {
         displayImg.sprite = null;
         displayText.text = "";
+        displayReward.text = "";
         cancelText.text = "Leave";
     }
 

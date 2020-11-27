@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//TODO: make a claim reward function and dialog
 public class QuestInteraction : MonoBehaviour
 {
     [SerializeField] QuestGiverList listOfQuests;
@@ -120,18 +120,7 @@ public class QuestInteraction : MonoBehaviour
     public void pushBuy()
     {
         dMang.StartDialog(takeQuest);
-        switch(typeQuestLookingAt)
-        {
-            case "easy":
-                listOfQuests.removeQuest(typeQuestLookingAt);
-                break;
-            case "medium":
-                break;
-            case "hard":
-                break;
-            case "Boss":
-                break;
-        }
+        listOfQuests.removeQuest(typeQuestLookingAt);
 
         listOfQuests.displayNothing();
         typeQuestLookingAt = "";

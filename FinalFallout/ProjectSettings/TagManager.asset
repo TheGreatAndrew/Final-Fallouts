@@ -9,6 +9,7 @@ TagManager:
   - DialogManager
   - Overworld
   - QuestGiver
+  - Inventory
   layers:
   - Default
   - TransparentFX

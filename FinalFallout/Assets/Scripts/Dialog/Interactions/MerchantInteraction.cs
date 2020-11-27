@@ -193,10 +193,10 @@ public class MerchantInteraction : MonoBehaviour
     public void TriggerBuyPotion()
     {
         dMang.StartDialog(PotionYes);
-        if (player.gold >= shopItems.legGearCost)
+        if (player.gold >= shopItems.potionCost)
         {
-            //update inventory for chest
-            player.gold -= shopItems.legGearCost;
+            shopItems.createPotion();
+            player.gold -= shopItems.potionCost;
         }
         else
         {
@@ -250,7 +250,7 @@ public class MerchantInteraction : MonoBehaviour
             case "chest":
                 if (player.gold >= shopItems.chestGearCost)
                 {
-                    //update inventory for chest
+                    shopItems.createChest();
                     player.gold -= shopItems.chestGearCost;
                 }
                 else
@@ -261,7 +261,7 @@ public class MerchantInteraction : MonoBehaviour
             case "head":
                 if (player.gold >= shopItems.headGearCost)
                 {
-                    //update inventory for chest
+                    shopItems.createHead();
                     player.gold -= shopItems.headGearCost;
                 }
                 else
@@ -272,7 +272,7 @@ public class MerchantInteraction : MonoBehaviour
             case "arms":
                 if (player.gold >= shopItems.armGearCost)
                 {
-                    //update inventory for chest
+                    shopItems.createArm();
                     player.gold -= shopItems.armGearCost;
                 }
                 else
@@ -283,7 +283,7 @@ public class MerchantInteraction : MonoBehaviour
             case "legs":
                 if (player.gold >= shopItems.legGearCost)
                 {
-                    //update inventory for chest
+                    shopItems.createLeg();
                     player.gold -= shopItems.legGearCost;
                 }
                 else
