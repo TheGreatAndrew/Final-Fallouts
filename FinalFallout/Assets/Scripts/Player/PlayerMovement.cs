@@ -51,6 +51,41 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerPrefs.GetInt("BattleScene") == 1 && PlayerPrefs.GetInt("BattleWon") == 1){
+
+            PlayerPrefs.DeleteKey("BattleScene");
+            PlayerPrefs.DeleteKey("BattleWon");
+
+            // 0 -> 10 potions
+            // 5 -> 15 good equipment
+            // 15 -> 25 normal equipment
+            int random = Random.Range(0,25);
+            GameObject item;
+            switch(random){
+                case 0 : item = Instantiate(Resources.Load("Consumables/HealthPotion", typeof(GameObject))) as GameObject; break;
+                case 1 : item = Instantiate(Resources.Load("Consumables/AttackPotion", typeof(GameObject))) as GameObject; break;
+                case 2 : item = Instantiate(Resources.Load("Consumables/DefensePotion", typeof(GameObject))) as GameObject; break;
+                
+                case 5 : item = Instantiate(Resources.Load("Equipments/CursedArmor", typeof(GameObject))) as GameObject; break;
+                case 6 : item = Instantiate(Resources.Load("Equipments/CursedGlove", typeof(GameObject))) as GameObject; break;
+                case 7 : item = Instantiate(Resources.Load("Equipments/CursedHelmet", typeof(GameObject))) as GameObject; break;
+                case 8 : item = Instantiate(Resources.Load("Equipments/CursedShoes", typeof(GameObject))) as GameObject; break;
+                case 9 : item = Instantiate(Resources.Load("Equipments/CursedSword", typeof(GameObject))) as GameObject; break;
+                case 10 : item = Instantiate(Resources.Load("Equipments/DiamonHelmet", typeof(GameObject))) as GameObject; break;
+
+                case 15 : item = Instantiate(Resources.Load("Equipments/NormalClothes", typeof(GameObject))) as GameObject; break;
+                case 16 : item = Instantiate(Resources.Load("Equipments/NormalShield", typeof(GameObject))) as GameObject; break;
+                case 17 : item = Instantiate(Resources.Load("Equipments/NormalShoes", typeof(GameObject))) as GameObject; break;
+                case 18 : item = Instantiate(Resources.Load("Equipments/NormalSword", typeof(GameObject))) as GameObject; break;
+
+                default : item = null; break;
+            }
+            if(item != null){
+                Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+                Instantiate(item, playerPos + new Vector3(1, 0, 0), Quaternion.identity );
+            }
+        }
+
         moveH = Input.GetAxisRaw("Horizontal") * moveSpeed;
         moveV = Input.GetAxisRaw("Vertical") * moveSpeed;
 
