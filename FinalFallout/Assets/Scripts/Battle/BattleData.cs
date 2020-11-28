@@ -15,7 +15,7 @@ public class BattleData : MonoBehaviour
     private bool playerTurn = true;
     private bool enemyTurnRunning = false;
     private Random rng;
-
+    private int maxHp;
     public Button attackButton;
     public Button fleeButton;
 
@@ -31,6 +31,7 @@ public class BattleData : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
         currentPlayerState = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>();
         playerHealthBar.SetMaxHealth(currentPlayerState.health);
+        maxHp = currentPlayerState.health;
         enemyHealthBar.SetMaxHealth(currentEnemyState.health);
         rng = new Random();
     }
@@ -49,6 +50,7 @@ public class BattleData : MonoBehaviour
 
         if (currentEnemyState.health <= 0)
         {
+            currentEnemyState.Death();
             Flee();
             Debug.Log("Won battle");
             PlayerPrefs.SetInt("BattleWon", 1);
@@ -85,7 +87,7 @@ public class BattleData : MonoBehaviour
     public void Flee()
     {
         Debug.Log("Flee Called");
-        currentPlayerState.health = 100;
+        currentPlayerState.health = maxHp;
         GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().enabled = true;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
         Vector3 tempPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position = currentPlayerState.currentPos;
