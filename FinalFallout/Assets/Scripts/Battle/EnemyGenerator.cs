@@ -58,7 +58,7 @@ public class EnemyGenerator : MonoBehaviour
                 monsterPrefab = Instantiate(monsters[7]); //captain killer
                 break;
             case "safe":
-                goto default;
+                break;
             default:
                 monsterPrefab = Instantiate(monsters[6]); //debug dragon
                 Debug.Log("NOTE: Dragon not supposed to show up in battle state");
