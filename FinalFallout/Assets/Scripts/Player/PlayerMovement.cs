@@ -140,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.CompareTag("QuestGiver"))
         {
             rndEncScript.setSafeZoneCurve();
+            biomeTag = "safe";
             gameCtrl.QuestGiverList.GetComponent<QuestInteraction>().triggerInteraction();
         }
 
