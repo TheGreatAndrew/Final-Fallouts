@@ -39,7 +39,10 @@ public class EnemyGenerator : MonoBehaviour
             return;
         }
         var randomNumber = rng.Next(100);
-        Destroy(monsterPrefab);
+        if (monsterPrefab)
+        {
+            Destroy(monsterPrefab);
+        }
         switch (movement.biomeTag)
         {
             case "Overworld":
