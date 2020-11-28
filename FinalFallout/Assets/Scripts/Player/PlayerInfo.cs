@@ -21,8 +21,6 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] DialogManager dMang;
 
     //for player menus
-    public GameObject playerMenus;
-    private bool inPlayerMenu = false;
 
     public Dictionary<string, int> playerInfo; //see GetCurrentPlayerData() for explanation
 
@@ -84,8 +82,6 @@ public class PlayerInfo : MonoBehaviour
         // inventory = new Inventory();
         // inventoryUI.SetInventory(inventory);
 
-        playerMenus.SetActive(false);
-
     }
 
     // Update is called once per frame
@@ -113,23 +109,6 @@ public class PlayerInfo : MonoBehaviour
                 dMang = GameObject.FindGameObjectWithTag("DialogManager").GetComponent<DialogManager>();
             dMang.DisplayNextSentence();
 
-        }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            if (inPlayerMenu)
-            {
-                playerMenus.SetActive(false);
-                inPlayerMenu = false;
-                gameObject.GetComponent<PlayerMovement>().enabled = true;
-            }
-            else
-            {
-                playerMenus.SetActive(true);
-                inPlayerMenu = true;
-                gameObject.GetComponent<PlayerMovement>().StopPlayer();
-                gameObject.GetComponent<PlayerMovement>().enabled = false;
-            }
         }
     }
     /******************************************
