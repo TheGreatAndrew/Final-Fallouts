@@ -10,6 +10,10 @@ TagManager:
   - Overworld
   - QuestGiver
   - Inventory
+  - HillTop
+  - DungeonAbove
+  - DungeonBelow
+  - QuestBoss
   layers:
   - Default
   - TransparentFX

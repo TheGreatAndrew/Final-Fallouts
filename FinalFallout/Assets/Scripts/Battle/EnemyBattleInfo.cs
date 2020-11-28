@@ -10,8 +10,8 @@ public class EnemyBattleInfo : MonoBehaviour
     public int numArms = 2;
     public float chanceForAttack2 = 0.2f;
 
-    PlayerInfo player;
-
+    private PlayerInfo player;
+    private MonsterClass monster;
 
     private void Start()
     {

@@ -51,6 +51,7 @@ public class PlayerInfo : MonoBehaviour
     public Text weaponDmgText;
     public Text numArmsText;
 
+    public MonsterClass currentMonster; //Needed to store monster generated for battle scene
     //Singleton pattern to access the player information from
     //other scenes
     void Start() 
@@ -76,7 +77,7 @@ public class PlayerInfo : MonoBehaviour
             {"WeaponDmg", weaponDmg},
             {"NumArms", numArms}
         }; //Needed to preserve player info across scenes
-        
+        currentMonster = null;   
         inventory = Inventory.instance;
         // inventory = new Inventory();
         // inventoryUI.SetInventory(inventory);

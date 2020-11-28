@@ -2853,9 +2853,8 @@ GameObject:
   - component: {fileID: 8387954403480139220}
   - component: {fileID: 8387954403480139219}
   - component: {fileID: 8387954403480139218}
-  - component: {fileID: 1454564733928924046}
   m_Layer: 0
-  m_Name: PlayerBackup1
+  m_Name: PlayerDebug
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2985,7 +2984,6 @@ MonoBehaviour:
   moveV: 0
   moveSpeed: 2
   levelPW: 
-  biomeTag: 
   focus: {fileID: 0}
   gameCtrl: {fileID: 0}
 --- !u!114 &8387954403480139219
@@ -3027,7 +3025,6 @@ MonoBehaviour:
   attackText: {fileID: 8387954402864035460}
   weaponDmgText: {fileID: 8387954402702970664}
   numArmsText: {fileID: 8387954402999812617}
-  currentMonster: {fileID: 0}
 --- !u!114 &8387954403480139218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3086,30 +3083,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   offset: 0.0025
---- !u!114 &1454564733928924046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387954403480139217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cdc2c78ec2a5e45850c09f7e5b9064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMonster: {fileID: 0}
-  player: {fileID: 0}
-  movement: {fileID: 0}
-  monsters:
-  - {fileID: 3475791689175720473, guid: e7c2335a56cc8b040aeeac57da108e1f, type: 3}
-  - {fileID: 1386202986300826154, guid: 17ec69e2f4609b746b0cb1dd81e7fc1e, type: 3}
-  - {fileID: 2105632057653003309, guid: eb2643428429be7478768c4c3b2a1838, type: 3}
-  - {fileID: 5516136564568553947, guid: 65be653783e82f54d9e0f6cf7b182257, type: 3}
-  - {fileID: 5728082071221384793, guid: c3951ebfadeb6aa4ebaabc4424d8dd3b, type: 3}
-  - {fileID: 5552975923878311646, guid: 0f1346d07f9d0424b99ff0a3c5b5d347, type: 3}
-  - {fileID: 795389020873610768, guid: d124d3bf418719d4d9d389cfae9c9684, type: 3}
-  - {fileID: 4195726615032311200, guid: 58b3d7e8db06dd54a9bb876ea26028a9, type: 3}
 --- !u!1 &8387954403489046072
 GameObject:
   m_ObjectHideFlags: 0

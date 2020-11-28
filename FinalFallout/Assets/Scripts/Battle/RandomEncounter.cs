@@ -23,11 +23,13 @@ public class RandomEncounter : MonoBehaviour
     [SerializeField] private float offset = 0.0025f; //I like 0.001 but 25 is a good number for debugging 
     private float encounterChance;
     private float encounterThreshold;
+    private PlayerInfo player; //use this probably to get the biome
 
 
     
     void Start()
     {
+        player = GetComponent<PlayerInfo>();
         //TODO probably need to get player info or at least biome location player is currently in
         currentCurve = OverworldCurve;
     }
@@ -36,7 +38,7 @@ public class RandomEncounter : MonoBehaviour
     public void isEncounter()
     {
         //TODO check which biome player is in to see what curve to use
-
+        
         encounterChance = Random.Range(0f, 1f);
         
         encounterThreshold = currentCurve.Evaluate(lookAt); //This is where biome comes into play

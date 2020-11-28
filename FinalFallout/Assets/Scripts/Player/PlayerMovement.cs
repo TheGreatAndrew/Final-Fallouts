@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 2.0f;
 
     public string levelPW;
+
+    public string biomeTag;
     //Create a singleton pattern to have 
     //access to the movement from other scenes
 
@@ -38,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         DontDestroyOnLoad(gameObject);
+        biomeTag = "Overworld";
 
     }
     void Start()
@@ -46,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         gameCtrl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         rb = GetComponent<Rigidbody2D>();
         rndEncScript = gameObject.GetComponent<RandomEncounter>();
+        
     }
 
     // Update is called once per frame
@@ -124,7 +128,22 @@ public class PlayerMovement : MonoBehaviour
         if(other.name == "SafeZone")
         {
             rndEncScript.setSafeZoneCurve();
+        }//everything below the line is new logic --------------
+        else
+        {
+            switch (other.tag)
+            {
+                case "QuestGiver":
+                    gameCtrl.QuestGiverList.GetComponent<QuestInteraction>().triggerInteraction();
+                    break;
+                default:
+                    rndEncScript.setOverworldCurve();
+                    biomeTag = other.tag;
+                    break;
+            }
         }
+        //everything above the line is new logic --------------
+        /* switchify this
         if (other.tag == "Overworld")
         {
             rndEncScript.setOverworldCurve();
@@ -132,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.tag == "QuestGiver")
         {
             gameCtrl.QuestGiverList.GetComponent<QuestInteraction>().triggerInteraction();
-        }
+        }*/
     }
 
     // FOR MENU
