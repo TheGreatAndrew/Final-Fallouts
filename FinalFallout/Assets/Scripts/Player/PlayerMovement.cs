@@ -143,10 +143,16 @@ public class PlayerMovement : MonoBehaviour
             gameCtrl.QuestGiverList.GetComponent<QuestInteraction>().triggerInteraction();
         }
 
-        if (other.CompareTag("safe"))
+        if (other.CompareTag("Untagged"))
         {
-            biomeTag = "safe";
-            rndEncScript.setSafeZoneCurve();
+            if(biomeTag == "safe")
+            {
+                rndEncScript.setSafeZoneCurve();
+            }//everything below the line is new logic --------------
+            else
+            {
+                rndEncScript.setOverworldCurve();
+            }
         }
         
         //everything above the line is new logic --------------
