@@ -128,22 +128,20 @@ public class PlayerMovement : MonoBehaviour
         if(other.name == "SafeZone")
         {
             rndEncScript.setSafeZoneCurve();
+            biomeTag = "safe";
         }//everything below the line is new logic --------------
         else
         {
-            switch (other.tag)
-            {
-                case "QuestGiver":
-                    gameCtrl.QuestGiverList.GetComponent<QuestInteraction>().triggerInteraction();
-                    break;
-                default:
-                    rndEncScript.setOverworldCurve();
-                    biomeTag = other.tag;
-                    break;
-            }
+            rndEncScript.setOverworldCurve();
+            biomeTag = other.tag;
         }
+        if(other.CompareTag("QuestGiver"))
+        {
+            gameCtrl.QuestGiverList.GetComponent<QuestInteraction>().triggerInteraction();
+        }
+        
         //everything above the line is new logic --------------
-        /* switchify this
+        /* old logic
         if (other.tag == "Overworld")
         {
             rndEncScript.setOverworldCurve();
