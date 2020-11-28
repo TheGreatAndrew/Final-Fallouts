@@ -23,13 +23,15 @@ public class RandomEncounter : MonoBehaviour
     [SerializeField] private float offset = 0.0025f; //I like 0.001 but 25 is a good number for debugging 
     private float encounterChance;
     private float encounterThreshold;
-    private PlayerInfo player; //use this probably to get the biome
+    private PlayerInfo player;
+    private PlayerMovement playerMovement;//use this probably to get the biome
 
 
     
     void Start()
     {
         player = GetComponent<PlayerInfo>();
+        playerMovement = GetComponent<PlayerMovement>();
         //TODO probably need to get player info or at least biome location player is currently in
         currentCurve = OverworldCurve;
     }
@@ -43,7 +45,7 @@ public class RandomEncounter : MonoBehaviour
         
         encounterThreshold = currentCurve.Evaluate(lookAt); //This is where biome comes into play
         
-        if (encounterChance <= encounterThreshold)
+        if (encounterChance <= encounterThreshold && playerMovement.biomeTag != "safe")
         {
             Debug.Log("~~~~~BATTLE~~~~~");
             SceneManager.LoadScene("SimpleBattle");

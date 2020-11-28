@@ -124,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.name == "Merchant")
         {
             rndEncScript.setSafeZoneCurve();
+            biomeTag = "safe";
             gameCtrl.MerchantShopMenu.GetComponent<MerchantInteraction>().TriggerInteraction();
         }
         if(other.name == "SafeZone")
@@ -140,6 +141,12 @@ public class PlayerMovement : MonoBehaviour
         {
             rndEncScript.setSafeZoneCurve();
             gameCtrl.QuestGiverList.GetComponent<QuestInteraction>().triggerInteraction();
+        }
+
+        if (other.CompareTag("safe"))
+        {
+            biomeTag = "safe";
+            rndEncScript.setSafeZoneCurve();
         }
         
         //everything above the line is new logic --------------
