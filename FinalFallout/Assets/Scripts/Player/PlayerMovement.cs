@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
             biomeTag = "safe";
             gameCtrl.MerchantShopMenu.GetComponent<MerchantInteraction>().TriggerInteraction();
         }
-        if(other.name == "SafeZone")
+        if(other.name == "SafeZone" || other.CompareTag("safe"))
         {
             rndEncScript.setSafeZoneCurve();
             biomeTag = "safe";
