@@ -120,7 +120,7 @@ public class MerchantItems : MonoBehaviour
         Equipment armGearItem = ScriptableObject.CreateInstance<Equipment>();
         armGearItem.name = "Iron Gauntlets";
         armGearItem.icon = armGear;
-        armGearItem.equipSlot = EquipmentSlot.Arm;
+        armGearItem.equipSlot = EquipmentSlot.SubWeapon;
         armGearItem.armorModifier = 5;
         player.Add(armGearItem);
     }
@@ -132,7 +132,6 @@ public class MerchantItems : MonoBehaviour
         legGearItem.icon = legGear;
         legGearItem.equipSlot = EquipmentSlot.Feet;
         legGearItem.armorModifier = 5;
-        legGearItem.isDefaultItem = false;
         player.Add(legGearItem);
     }
 

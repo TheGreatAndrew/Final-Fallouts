@@ -47,6 +47,11 @@ public class QuestGiverList : MonoBehaviour
     Quest hard;
     Quest Boss;
 
+    [SerializeField] MonsterClass easyEnemy;
+    [SerializeField] MonsterClass medEnemy;
+    [SerializeField] MonsterClass hardEnemy;
+    [SerializeField] MonsterClass bossEnemy;
+
 
     private void Start()
     {
@@ -60,6 +65,7 @@ public class QuestGiverList : MonoBehaviour
         easy.reward = easyReward;
         easy.location = "Overworld";
         easy.img = easySprite;
+        easy.enemy = easyEnemy;
         quests.Add(easy);
 
         medium = new Quest();
@@ -69,6 +75,7 @@ public class QuestGiverList : MonoBehaviour
         medium.reward = medReward;
         medium.location = "Overworld: HillTops";
         medium.img = medSprite;
+        medium.enemy = medEnemy;
         quests.Add(medium);
 
         hard = new Quest();
@@ -79,6 +86,7 @@ public class QuestGiverList : MonoBehaviour
         hard.reward = hardReward;
         hard.location = "Overworld: Around the Dungeon";
         hard.img = hardSprite;
+        hard.enemy = hardEnemy;
         quests.Add(hard);
 
         Boss = new Quest();
@@ -89,6 +97,7 @@ public class QuestGiverList : MonoBehaviour
         Boss.reward = bossReward;
         Boss.location = "Overworld: Dungeon entrance";
         Boss.img = bossSprite;
+        Boss.enemy = bossEnemy;
         quests.Add(Boss);
 
         easyText.text = easy.name;

@@ -111,9 +111,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayMonster: {fileID: 1386202986300826152}
   monsterSprite: {fileID: 21300000, guid: 93c47e8c38f653f4881431d893472740, type: 3}
+  name: Mushroom
   health: 25
   attack: 10
   defense: 5
   rewards: 25
   numArms: 1
   chanceAttack2: 0.005
+  location: 'Overworld: Hilltops'

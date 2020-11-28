@@ -111,9 +111,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayMonster: {fileID: 3475791689175720471}
   monsterSprite: {fileID: 21300000, guid: bef2dfc10a1f65c478ebd3fb777ca28e, type: 3}
+  name: Gecko
   health: 50
   attack: 25
   defense: 10
   rewards: 100
   numArms: 2
   chanceAttack2: 0.1
+  location: 'Overworld: Around the Dungeon'

@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayMonster: {fileID: 5552975923878311644}
   monsterSprite: {fileID: 21300000, guid: c01841422fe76c547a09de2ba74f7411, type: 3}
+  name: Double Sword Skeleton
   health: 50
   attack: 30
   defense: 15

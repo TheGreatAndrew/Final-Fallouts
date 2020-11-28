@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayMonster: {fileID: 2105632057653003307}
   monsterSprite: {fileID: 21300000, guid: 782a6537398e9f94ba7164a17d586cf2, type: 3}
+  name: Jellyfish
   health: 50
   attack: 10
   defense: 5

@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayMonster: {fileID: 795389020873610770}
   monsterSprite: {fileID: 21300000, guid: ab5a78ee5c9cd264a82dbadd4e331ab0, type: 3}
+  name: Dragon
   health: 1000000
   attack: 5
   defense: 1000000

@@ -111,9 +111,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayMonster: {fileID: 5516136564568553949}
   monsterSprite: {fileID: 21300000, guid: b3ece02238dc6124a8d45165e2af272d, type: 3}
+  name: Slime
   health: 10
   attack: 5
   defense: 1
   rewards: 15
   numArms: 2
   chanceAttack2: 0.0025
+  location: Overworld

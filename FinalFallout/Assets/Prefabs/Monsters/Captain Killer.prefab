@@ -111,9 +111,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayMonster: {fileID: 4195726615032311206}
   monsterSprite: {fileID: 21300000, guid: 99be5d7d4fd7ce14bb6b66b98016d10c, type: 3}
+  name: Captain Killer
   health: 100
   attack: 30
   defense: 25
   rewards: 1000
   numArms: 4
   chanceAttack2: 0.15
+  location: 'Overworld: Dungeon entrance'

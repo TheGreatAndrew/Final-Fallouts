@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayMonster: {fileID: 5728082071221384795}
   monsterSprite: {fileID: 21300000, guid: 80a604ec7992fee4fbdd44cd2c861932, type: 3}
+  name: SwordShield Skeleton
   health: 50
   attack: 20
   defense: 30
