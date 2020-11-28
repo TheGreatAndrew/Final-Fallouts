@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = System.Random;
 
@@ -12,12 +13,14 @@ public class EnemyGenerator : MonoBehaviour
     public List<GameObject> monsters;
     private Random rng;
     private bool cooldownOff = true;
+    private string[] validtags;
     private void Start()
     {
         rng = new Random();
         player = GetComponent<PlayerInfo>();
         movement = GetComponent<PlayerMovement>();
         monsterPrefab = Instantiate(monsters[7]);
+        validtags = new string[]{"Overworld","HillTop","DungeonAbove","DungeonBelow","QuestBoss","safe"};
     }
 
     private void FixedUpdate()
@@ -38,11 +41,19 @@ public class EnemyGenerator : MonoBehaviour
         {
             return;
         }
+        var tmp = validtags.Aggregate(false, (current, vtag) => current || vtag.Equals(movement.biomeTag));
+
+        if (!tmp)
+        {
+            return;
+        }
         var randomNumber = rng.Next(100);
         if (monsterPrefab)
         {
             Destroy(monsterPrefab);
         }
+
+        
         switch (movement.biomeTag)
         {
             case "Overworld":
@@ -63,11 +74,8 @@ public class EnemyGenerator : MonoBehaviour
             case "safe":
                 break;
             default:
-                monsterPrefab = Instantiate(monsters[6]); //debug dragon
-                Debug.Log("NOTE: Dragon not supposed to show up in battle state");
                 break;
         }
-
         currentMonster = monsterPrefab.GetComponent<MonsterClass>();
         monsterPrefab.SetActive(false);
     }

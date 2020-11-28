@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = System.Random;
 
 /*
  * TODO: IMPLEMENT SAVE FILE
@@ -11,39 +12,34 @@ public class BattleData : MonoBehaviour
 {
     public HealthBar playerHealthBar;
     public HealthBar enemyHealthBar;
-    private Dictionary<string,int> player;
-    private Dictionary<string,int> enemy;
     private bool playerTurn = true;
     private bool enemyTurnRunning = false;
+    private Random rng;
 
     public Button attackButton;
     public Button fleeButton;
 
     private PlayerInfo currentPlayerState;
+
+    private EnemyBattleInfo currentEnemyState;
     // Start is called before the first frame update
     void Start()
     {
-        
-        enemy = new Dictionary<string, int>
-        {
-            {"Health",50},
-            {"Attack",20}
-            
-        };//more debug stuff
+        currentEnemyState = FindObjectOfType<EnemyBattleInfo>();
         GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().enabled = false;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().StopPlayer();
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
         currentPlayerState = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>();
-        player = currentPlayerState.playerInfo;
-        playerHealthBar.SetMaxHealth(player["Health"]);
-        enemyHealthBar.SetMaxHealth(enemy["Health"]);
+        playerHealthBar.SetMaxHealth(currentPlayerState.health);
+        enemyHealthBar.SetMaxHealth(currentEnemyState.health);
+        rng = new Random();
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerHealthBar.UpdateHealth(player["Health"]);
-        enemyHealthBar.UpdateHealth(enemy["Health"]);
+        playerHealthBar.UpdateHealth(currentPlayerState.health);
+        enemyHealthBar.UpdateHealth(currentEnemyState.health);
         if (currentPlayerState.health <= 0)
         {
             Flee();
@@ -51,7 +47,7 @@ public class BattleData : MonoBehaviour
             return;
         }
 
-        if (enemy["Health"] <= 0)
+        if (currentEnemyState.health <= 0)
         {
             Flee();
             Debug.Log("Won battle");
@@ -109,11 +105,20 @@ public class BattleData : MonoBehaviour
         Debug.Log("Attack called");
         if (!playerTurn)
         {
-            currentPlayerState.health -= enemy["Attack"];
+            currentEnemyState.attack1();
+            if (rng.Next(100) < 100 * .1f * currentEnemyState.numArms)
+            {
+                currentEnemyState.attack2();
+            } 
         }
         else
         {
-            enemy["Health"] -= currentPlayerState.attack;
+            var tmp = currentPlayerState.attack - currentEnemyState.defense;
+            currentEnemyState.health -= (tmp>0)? tmp:1;
+            if (rng.Next(100) < 100 * .1f * currentPlayerState.numArms)
+            {
+                currentEnemyState.health -= (tmp>0)? tmp/2:0;
+            }
             playerTurn = false;
         }
     }

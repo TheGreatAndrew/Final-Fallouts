@@ -122,7 +122,8 @@ public class PlayerMovement : MonoBehaviour
             gameCtrl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
         if (other.name == "Merchant")
-        {           
+        {
+            rndEncScript.setSafeZoneCurve();
             gameCtrl.MerchantShopMenu.GetComponent<MerchantInteraction>().TriggerInteraction();
         }
         if(other.name == "SafeZone")
@@ -137,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(other.CompareTag("QuestGiver"))
         {
+            rndEncScript.setSafeZoneCurve();
             gameCtrl.QuestGiverList.GetComponent<QuestInteraction>().triggerInteraction();
         }
         
