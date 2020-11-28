@@ -816,6 +816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 536797753}
   - component: {fileID: 536797752}
+  - component: {fileID: 536797754}
   m_Layer: 0
   m_Name: New Sprite
   m_TagString: Untagged
@@ -888,6 +889,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &536797754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536797751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f0763a6a7640534582cf0813fc71bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 150
+  attack: 10
+  defense: 15
+  numArms: 2
+  chanceForAttack2: 0.2
 --- !u!1 &551876422
 GameObject:
   m_ObjectHideFlags: 0

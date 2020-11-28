@@ -8,7 +8,7 @@ public class EnemyBattleInfo : MonoBehaviour
     public int attack = 10;
     public int defense = 15;
     public int numArms = 2;
-    public float chanceForAttack2 = 0.2f;
+    public float chanceForAttack2 = 0.1f;
 
     private PlayerInfo player;
     private MonsterClass monster;
@@ -16,6 +16,12 @@ public class EnemyBattleInfo : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>();
+        monster = player.currentMonster;
+        health = monster.health;
+        attack = monster.attack;
+        defense = monster.defense;
+        numArms = monster.numArms;
+        GetComponent<SpriteRenderer>().sprite = monster.monsterSprite;
     }
 
     private void Update()

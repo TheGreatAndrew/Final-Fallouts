@@ -34,6 +34,10 @@ public class EnemyGenerator : MonoBehaviour
 
     public void ReplaceMonster()
     {
+        if (player.inBattle)
+        {
+            return;
+        }
         var randomNumber = rng.Next(100);
         Destroy(monsterPrefab);
         switch (movement.biomeTag)

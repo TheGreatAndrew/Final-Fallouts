@@ -52,6 +52,8 @@ public class PlayerInfo : MonoBehaviour
     public Text numArmsText;
 
     public MonsterClass currentMonster; //Needed to store monster generated for battle scene
+
+    public bool inBattle = false;
     //Singleton pattern to access the player information from
     //other scenes
     void Start() 
@@ -196,10 +198,12 @@ public class PlayerInfo : MonoBehaviour
         if (scene.name.CompareTo("SimpleBattle") != 0)
         {
             sceneName = scene.name;
+            inBattle = false;
         }
         else
         {
             currentPos = pos.position;
+            inBattle = true;
         }
     }
 
