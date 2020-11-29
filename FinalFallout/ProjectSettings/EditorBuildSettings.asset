@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HouseRoom.unity
     guid: 078bb68cc7a3fd94581a0c83747715a5
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 80513107d4c11ba44965ac9ff23c7d8c
   m_configObjects: {}
