@@ -20,7 +20,7 @@ public class EnemyGenerator : MonoBehaviour
         player = GetComponent<PlayerInfo>();
         movement = GetComponent<PlayerMovement>();
         monsterPrefab = Instantiate(monsters[7]);
-        validtags = new string[]{"Overworld","HillTop","DungeonAbove","DungeonBelow","QuestBoss","safe"};
+        validtags = new string[]{"Overworld","HillTop","DungeonAbove","DungeonBelow","QuestBoss"};
     }
 
     private void FixedUpdate()
@@ -70,8 +70,6 @@ public class EnemyGenerator : MonoBehaviour
                 break;
             case "QuestBoss":
                 monsterPrefab = Instantiate(monsters[7]); //captain killer
-                break;
-            case "safe":
                 break;
             default:
                 break;
