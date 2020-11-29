@@ -2185,6 +2185,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8387954403480139219, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
+      propertyPath: gold
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 8387954403480139224, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.15124
@@ -27444,10 +27448,10 @@ MonoBehaviour:
   medSprite: {fileID: 21300000, guid: 93c47e8c38f653f4881431d893472740, type: 3}
   hardSprite: {fileID: 21300000, guid: bef2dfc10a1f65c478ebd3fb777ca28e, type: 3}
   bossSprite: {fileID: 21300000, guid: 99be5d7d4fd7ce14bb6b66b98016d10c, type: 3}
-  easyEnemy: {fileID: 0}
-  medEnemy: {fileID: 0}
-  hardEnemy: {fileID: 0}
-  bossEnemy: {fileID: 0}
+  easyEnemy: {fileID: 5516136564568553948, guid: 65be653783e82f54d9e0f6cf7b182257, type: 3}
+  medEnemy: {fileID: 1386202986300826153, guid: 17ec69e2f4609b746b0cb1dd81e7fc1e, type: 3}
+  hardEnemy: {fileID: 3475791689175720472, guid: e7c2335a56cc8b040aeeac57da108e1f, type: 3}
+  bossEnemy: {fileID: 4195726615032311207, guid: 58b3d7e8db06dd54a9bb876ea26028a9, type: 3}
 --- !u!1 &1366860047
 GameObject:
   m_ObjectHideFlags: 0

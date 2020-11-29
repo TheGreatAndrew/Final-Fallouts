@@ -18,9 +18,10 @@ public class QuestMenu : MonoBehaviour
     private int maxQuests = 4;
     private string[] displayedQuests;
 
-    void Start()
+    private void Awake()
     {
         displayedQuests = new string[4];
+
         for (int ix = 0; ix < maxQuests; ix++)//hardcoding for now to only have 4 quests at a time
         {
             displaySprites[ix].sprite = defaultImg;
@@ -28,11 +29,14 @@ public class QuestMenu : MonoBehaviour
             displayLocation[ix].text = "";
             displayNumLeft[ix].text = "";
         }
+
         firstFreeRow = 0;
     }
 
     public void setQuest(Quest q)
     {
+        Debug.Log("Quest is: " + q.name);
+        
         if (firstFreeRow < maxQuests)
         {
             displaySprites[firstFreeRow].sprite = q.img;
@@ -72,6 +76,7 @@ public class QuestMenu : MonoBehaviour
 
     public void updateDisplay(Quest q)
     {
+
         for(int ix = 0; ix < maxQuests; ix++)
         {
             if(displayedQuests[ix] != null && q.name == displayedQuests[ix])

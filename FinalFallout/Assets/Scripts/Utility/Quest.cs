@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Quest : MonoBehaviour
+public class Quest : ScriptableObject
 {
-    public string name;
+    public new string name;
     public string description;
     public MonsterClass enemy;
     public int numEnemies;

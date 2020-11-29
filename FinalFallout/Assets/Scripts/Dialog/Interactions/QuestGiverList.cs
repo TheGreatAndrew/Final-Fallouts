@@ -60,15 +60,17 @@ public class QuestGiverList : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerQuestList>();
         displayReward.text = "";
         displayText.text = "";
-        easy = new Quest();
-        easy.name = "1st " + easyMonster + " Quest";
-        easy.description = "Mr. Dijkstra is having a hard time getting to his crops just outside of town. He wants you to thin out the "
-            + easyMonster + " so he can get there faster.\nKill " + easyNum + " " + easyMonster + "!";
-        easy.numEnemies = easyNum;
-        easy.reward = easyReward;
-        easy.location = "Overworld";
-        easy.img = easySprite;
-        easy.enemy = easyEnemy;
+        easy = new Quest
+        {
+            name = "1st " + easyMonster + " Quest",
+            description = "Mr. Dijkstra is having a hard time getting to his crops just outside of town. He wants you to thin out the "
+            + easyMonster + " so he can get there faster.\nKill " + easyNum + " " + easyMonster + "!",
+            numEnemies = easyNum,
+            reward = easyReward,
+            location = "Overworld",
+            img = easySprite,
+            enemy = easyEnemy
+        };
         quests.Add(easy);
 
         medium = new Quest();
