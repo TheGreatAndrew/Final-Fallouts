@@ -19,7 +19,6 @@ public class Inventory : MonoBehaviour {
 		// 	Debug.LogWarning("More than one instance of Inventory found!");
 		// 	return;
 		// }
-
 		// instance = this;
 
 		if(instance == null){
