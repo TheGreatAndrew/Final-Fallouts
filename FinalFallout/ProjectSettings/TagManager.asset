@@ -15,6 +15,7 @@ TagManager:
   - DungeonBelow
   - QuestBoss
   - safe
+  - QuestMenu
   layers:
   - Default
   - TransparentFX

@@ -78,7 +78,7 @@ public class BattleData : MonoBehaviour
     {
         playerTurn = false;
         enemyTurnRunning = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         Attack();
         playerTurn = true;
         enemyTurnRunning = false;

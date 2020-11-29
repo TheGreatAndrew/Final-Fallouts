@@ -29,6 +29,10 @@ public class EnemyBattleInfo : MonoBehaviour
         //is this the best place to put it? I like calling it when player is attacking
         if (health <= 0)
         {
+            Debug.Log("in Battle: Monster Killed: " + monster.name);
+            player.gold += monster.rewards;
+            Debug.Log("Player gold after rewards: " + player.gold);
+            player.gameObject.GetComponent<PlayerQuestList>().defeatEnemy(monster);
             Death();
         }
     }

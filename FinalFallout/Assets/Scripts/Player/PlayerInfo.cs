@@ -49,6 +49,10 @@ public class PlayerInfo : MonoBehaviour
     public Text weaponDmgText;
     public Text numArmsText;
 
+    //for quest menu
+    public GameObject questMenu;
+    private bool inQuestMenu = false;
+
     public MonsterClass currentMonster; //Needed to store monster generated for battle scene
 
     public bool inBattle = false;
@@ -64,6 +68,9 @@ public class PlayerInfo : MonoBehaviour
         armProtection = armGear.GetComponent<GearInfo>().armor;
         feetProtectionr = feetGear.GetComponent<GearInfo>().armor;
         dMang = GameObject.FindGameObjectWithTag("DialogManager").GetComponent<DialogManager>();
+
+        questMenu = GameObject.FindGameObjectWithTag("QuestMenu");
+        questMenu.SetActive(false);
 
         // armor = + headProtection + chestProtection + armProtection + feetProtectionr;
         armor = 0;
@@ -109,6 +116,22 @@ public class PlayerInfo : MonoBehaviour
                 dMang = GameObject.FindGameObjectWithTag("DialogManager").GetComponent<DialogManager>();
             dMang.DisplayNextSentence();
 
+        }
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            if (inQuestMenu)
+            {
+                questMenu.SetActive(false);
+                inQuestMenu = false;
+                gameObject.GetComponent<PlayerMovement>().enabled = true;
+            }
+            else
+            {
+                questMenu.SetActive(true);
+                inQuestMenu = true;
+                gameObject.GetComponent<PlayerMovement>().StopPlayer();
+                gameObject.GetComponent<PlayerMovement>().enabled = false;
+            }
         }
     }
     /******************************************

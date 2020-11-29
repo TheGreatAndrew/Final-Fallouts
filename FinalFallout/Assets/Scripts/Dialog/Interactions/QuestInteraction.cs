@@ -8,7 +8,7 @@ public class QuestInteraction : MonoBehaviour
 
     private DialogManager dMang;
     private PlayerInfo player;
-    Animator questDisplay;
+    [SerializeField] Animator questDisplay;
 
     private string QuestGiverName = "Hedy";
 

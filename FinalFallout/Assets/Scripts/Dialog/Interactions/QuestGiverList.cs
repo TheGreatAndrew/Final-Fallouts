@@ -30,12 +30,12 @@ public class QuestGiverList : MonoBehaviour
     [SerializeField] TextMeshProUGUI displayReward;
     [SerializeField] TextMeshProUGUI cancelText;
 
-    
+
     [SerializeField] TextMeshProUGUI easyText;
     [SerializeField] TextMeshProUGUI medText;
     [SerializeField] TextMeshProUGUI hardText;
     [SerializeField] TextMeshProUGUI bossText;
-    
+
 
     [SerializeField] Sprite easySprite;
     [SerializeField] Sprite medSprite;
@@ -47,9 +47,17 @@ public class QuestGiverList : MonoBehaviour
     Quest hard;
     Quest Boss;
 
+    [SerializeField] MonsterClass easyEnemy;
+    [SerializeField] MonsterClass medEnemy;
+    [SerializeField] MonsterClass hardEnemy;
+    [SerializeField] MonsterClass bossEnemy;
+
+    private PlayerQuestList player;
+
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerQuestList>();
         displayReward.text = "";
         displayText.text = "";
         easy = new Quest();
@@ -60,6 +68,7 @@ public class QuestGiverList : MonoBehaviour
         easy.reward = easyReward;
         easy.location = "Overworld";
         easy.img = easySprite;
+        easy.enemy = easyEnemy;
         quests.Add(easy);
 
         medium = new Quest();
@@ -69,6 +78,7 @@ public class QuestGiverList : MonoBehaviour
         medium.reward = medReward;
         medium.location = "Overworld: HillTops";
         medium.img = medSprite;
+        medium.enemy = medEnemy;
         quests.Add(medium);
 
         hard = new Quest();
@@ -79,6 +89,7 @@ public class QuestGiverList : MonoBehaviour
         hard.reward = hardReward;
         hard.location = "Overworld: Around the Dungeon";
         hard.img = hardSprite;
+        hard.enemy = hardEnemy;
         quests.Add(hard);
 
         Boss = new Quest();
@@ -89,6 +100,7 @@ public class QuestGiverList : MonoBehaviour
         Boss.reward = bossReward;
         Boss.location = "Overworld: Dungeon entrance";
         Boss.img = bossSprite;
+        Boss.enemy = bossEnemy;
         quests.Add(Boss);
 
         easyText.text = easy.name;
@@ -100,7 +112,7 @@ public class QuestGiverList : MonoBehaviour
 
     public void changeDisplay(string type)
     {
-        switch(type)
+        switch (type)
         {
             case "easy":
                 displayImg.sprite = easySprite;
@@ -144,6 +156,7 @@ public class QuestGiverList : MonoBehaviour
             case "easy":
                 if (quests.Contains(easy))
                 {
+                    player.addQuest(easy);
                     quests.Remove(easy);
                     easyText.text = "";
                     easyText.transform.parent.GetComponent<Button>().enabled = false;
@@ -152,6 +165,7 @@ public class QuestGiverList : MonoBehaviour
             case "medium":
                 if (quests.Contains(medium))
                 {
+                    player.addQuest(medium);
                     quests.Remove(medium);
                     medText.text = "";
                     medText.transform.parent.GetComponent<Button>().enabled = false;
@@ -160,6 +174,7 @@ public class QuestGiverList : MonoBehaviour
             case "hard":
                 if (quests.Contains(hard))
                 {
+                    player.addQuest(hard);
                     quests.Remove(hard);
                     hardText.text = "";
                     hardText.transform.parent.GetComponent<Button>().enabled = false;
@@ -168,6 +183,7 @@ public class QuestGiverList : MonoBehaviour
             case "Boss":
                 if (quests.Contains(Boss))
                 {
+                    player.addQuest(Boss);
                     quests.Remove(Boss);
                     bossText.text = "";
                     bossText.transform.parent.GetComponent<Button>().enabled = false;
