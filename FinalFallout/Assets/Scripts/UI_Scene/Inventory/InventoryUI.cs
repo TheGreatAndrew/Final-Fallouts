@@ -14,6 +14,8 @@ public class InventoryUI : MonoBehaviour {
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>();
+		playerStatsUI.SetActive(false);
+		inventoryUI.SetActive(false);
 	}
 
     public void Init(){
