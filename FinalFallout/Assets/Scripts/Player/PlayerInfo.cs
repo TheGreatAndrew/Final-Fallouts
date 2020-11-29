@@ -21,8 +21,10 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] DialogManager dMang;
 
     //for player menus
-    public GameObject playerMenus;
-    private bool inPlayerMenu = false;
+
+    //for quest menus
+    public GameObject questMenu;
+    private bool inQuestMenu = false;
 
     public Dictionary<string, int> playerInfo; //see GetCurrentPlayerData() for explanation
 
@@ -67,6 +69,8 @@ public class PlayerInfo : MonoBehaviour
         feetProtectionr = feetGear.GetComponent<GearInfo>().armor;
         dMang = GameObject.FindGameObjectWithTag("DialogManager").GetComponent<DialogManager>();
 
+        questMenu = GameObject.FindGameObjectWithTag("QuestMenu");
+
         // armor = + headProtection + chestProtection + armProtection + feetProtectionr;
         armor = 0;
         weaponDmg = 0;
@@ -84,8 +88,12 @@ public class PlayerInfo : MonoBehaviour
         // inventory = new Inventory();
         // inventoryUI.SetInventory(inventory);
 
+<<<<<<< HEAD
         playerMenus.SetActive(false);
+        questMenu.SetActive(false);
 
+=======
+>>>>>>> c92a688a0e57346cba260d15ecac332218dab06c
     }
 
     // Update is called once per frame
@@ -114,6 +122,7 @@ public class PlayerInfo : MonoBehaviour
             dMang.DisplayNextSentence();
 
         }
+<<<<<<< HEAD
 
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -131,6 +140,25 @@ public class PlayerInfo : MonoBehaviour
                 gameObject.GetComponent<PlayerMovement>().enabled = false;
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            if(inQuestMenu)
+            {
+                questMenu.SetActive(false);
+                inQuestMenu = false;
+                gameObject.GetComponent<PlayerMovement>().enabled = true;
+            }
+            else
+            {
+                questMenu.SetActive(true);
+                inQuestMenu = true;
+                gameObject.GetComponent<PlayerMovement>().StopPlayer();
+                gameObject.GetComponent<PlayerMovement>().enabled = false;
+            }
+        }
+=======
+>>>>>>> c92a688a0e57346cba260d15ecac332218dab06c
     }
     /******************************************
      *      Change equipment functions

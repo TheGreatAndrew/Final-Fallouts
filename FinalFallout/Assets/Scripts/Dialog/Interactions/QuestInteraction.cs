@@ -8,7 +8,7 @@ public class QuestInteraction : MonoBehaviour
 
     private DialogManager dMang;
     private PlayerInfo player;
-    Animator questDisplay;
+    [SerializeField] Animator questDisplay;
 
     private string QuestGiverName = "Hedy";
 
@@ -26,7 +26,7 @@ public class QuestInteraction : MonoBehaviour
     {
         dMang = FindObjectOfType<DialogManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>();
-        questDisplay = gameObject.GetComponent<Animator>();
+        //questDisplay = gameObject.GetComponent<Animator>();
 
         welcome = new Dialog();
         welcome.name = QuestGiverName;

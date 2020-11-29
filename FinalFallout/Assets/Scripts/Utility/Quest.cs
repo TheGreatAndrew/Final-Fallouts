@@ -7,6 +7,7 @@ public class Quest : MonoBehaviour
 {
     public string name;
     public string description;
+    public MonsterClass enemy;
     public int numEnemies;
     public int reward;
     public string location;

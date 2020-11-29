@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
    	public Interactable focus;	// Our current focus: Item, Enemy etc.
     // PlayerMovement motor;
 
-    [SerializeField] GameController gameCtrl;
+    public GameController gameCtrl;
 
     private void Awake()
     {

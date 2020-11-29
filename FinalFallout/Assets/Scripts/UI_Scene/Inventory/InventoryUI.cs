@@ -5,12 +5,15 @@ public class InventoryUI : MonoBehaviour {
 	public Transform itemsParent;	
 	public GameObject inventoryUI;	
 	public GameObject playerStatsUI; // FOR MENU quick fix 
+	private PlayerInfo player;
+    private bool inPlayerMenu = false;
 
 	Inventory inventory;
  
 	InventorySlot[] slots;	
 
 	void Start () {
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>();
 	}
 
     public void Init(){
@@ -22,10 +25,23 @@ public class InventoryUI : MonoBehaviour {
 	
 	void Update () {
 		if (Input.GetButtonDown("Inventory"))
-		{
-			inventoryUI.SetActive(!inventoryUI.activeSelf);
-			playerStatsUI.SetActive(!playerStatsUI.activeSelf);
-		}
+        {
+            if (inPlayerMenu)
+            {
+                playerStatsUI.SetActive(false);
+				inventoryUI.SetActive(false);
+                inPlayerMenu = false;
+                player.GetComponent<PlayerMovement>().enabled = true;
+            }
+            else
+            {
+                playerStatsUI.SetActive(true);
+				inventoryUI.SetActive(true);
+                inPlayerMenu = true;
+                player.GetComponent<PlayerMovement>().StopPlayer();
+                player.GetComponent<PlayerMovement>().enabled = false;
+			}
+	 	}
 	}
 
 	// This is called using a delegate on the Inventory.

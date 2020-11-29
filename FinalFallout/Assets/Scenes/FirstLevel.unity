@@ -20627,7 +20627,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.53, y: -1.26, z: -10}
+  m_LocalPosition: {x: 4.41, y: -1.26, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -25114,7 +25114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1063781471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26548,7 +26548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1342849737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26641,6 +26641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfQuests: {fileID: 1342849742}
+  questDisplay: {fileID: 1342849738}
   welcome:
     name: 
     sentences: []
@@ -26684,6 +26685,10 @@ MonoBehaviour:
   medSprite: {fileID: 21300000, guid: 93c47e8c38f653f4881431d893472740, type: 3}
   hardSprite: {fileID: 21300000, guid: bef2dfc10a1f65c478ebd3fb777ca28e, type: 3}
   bossSprite: {fileID: 21300000, guid: 99be5d7d4fd7ce14bb6b66b98016d10c, type: 3}
+  easyEnemy: {fileID: 0}
+  medEnemy: {fileID: 0}
+  hardEnemy: {fileID: 0}
+  bossEnemy: {fileID: 0}
 --- !u!1 &1366860047
 GameObject:
   m_ObjectHideFlags: 0
@@ -28257,6 +28262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerDebug
       objectReference: {fileID: 0}
+    - target: {fileID: 6822679004510100409, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8387954402751275307, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -28360,6 +28369,10 @@ PrefabInstance:
     - target: {fileID: 8387954403275073045, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387954403275073049, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8387954403287497836, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_AnchorMin.y
@@ -28472,6 +28485,10 @@ PrefabInstance:
     - target: {fileID: 8387954403480139219, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: health
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387954403480139219, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
+      propertyPath: questMenu
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8387954403480139220, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: playerMenus
@@ -28817,21 +28834,25 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8387954404555013823, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8387954404574996555, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8387954404574996555, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8387954404574996555, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1058.9401
       objectReference: {fileID: 0}
     - target: {fileID: 8387954404574996555, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -595.31287
       objectReference: {fileID: 0}
     - target: {fileID: 8387954404730681349, guid: 1f319126e59324b5897c68d92a75ab90, type: 3}
       propertyPath: m_AnchorMin.y
