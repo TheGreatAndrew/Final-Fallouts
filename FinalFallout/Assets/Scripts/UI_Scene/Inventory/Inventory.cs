@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 // TODO : DonDestroyOnLoad still create multiple instance of EquipmentManager and Inventory and this lead to error
-// check if inventory is created, if yes dont create it again
+// check if inventory is created, if yes dont create it again  
 
 public class Inventory : MonoBehaviour {
 
